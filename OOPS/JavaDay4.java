@@ -297,21 +297,62 @@
 
 /**
  * Activity 1 --> displayAscending Using Recursion 1 to 6 // Controlled
- * Recursion
+ * Recursion // 1 2 3 4 5
  */
-public class JavaDay4 {
-    static void displayAscending(int a) {
-        System.out.println(a);
+// public class JavaDay4 {
+// static void displayAscending(int a) {
+// System.out.println(a);
 
-        // Base Condition to Stop Looping after certain condition hit
-        if (a < 5) {
-            a++;
-            displayAscending(a);
-        }
+// // Base Condition to Stop Looping after certain condition hit
+// if (a < 5) {
+// a++;
+// displayAscending(a);
+// }
 
-    }
+// }
 
-    public static void main(String[] args) {
-        displayAscending(1);
-    }
-}
+// public static void main(String[] args) {
+// displayAscending(1);
+// }
+// }
+
+/**
+ * Activity 2 --> displayDescending Using Recursion 6 to 1 // Controlled
+ * Recursion // 5 4 3 2 1 0
+ */
+// public class JavaDay4 {
+// static void displayDescending(int a) { // 5 debug it to Properly UnderStand
+// System.out.println(a);
+
+// // Base Condition to Stop Looping after certain condition hit
+// if (a > 0) {
+// a--;
+// displayDescending(a);
+// }
+
+// }
+
+// public static void main(String[] args) {
+// displayDescending(5);
+// }
+// }
+
+/**
+ * Activity 3 --> Recursion Eg(Table of 7)--> Debug it For Better UnderStanding
+ */
+/************************************************************************************** */
+// Prefer Loops Over RECURSION
+/************************************************************************************** */
+// public class JavaDay4 {
+// static void display(int n) {
+// System.out.println(n);
+// if (n < 70) {
+// n = n + 7;
+// display(n);
+// }
+// }
+
+// public static void main(String[] args) {
+// display(7);
+// }
+// }
