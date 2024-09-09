@@ -1,1 +1,3 @@
 *.class
+git rm --cached *.class
+git commit -m "Remove .class files and update .gitignore"
