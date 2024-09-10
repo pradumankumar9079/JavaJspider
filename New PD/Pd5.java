@@ -71,8 +71,8 @@ public class Pd5 {
         // int num = s.nextInt();
         // checkEvenOddUsingDivisibilty(num);
 
-        // Q3) check if year is leap year or not --> paartially Correct
-        // System.out.println("Enter Year u wanna check fo Leap");
+        // Q3) check if year is leap year or not --> partially Correct
+        // System.out.println("Enter Year u wanna chec..k fo Leap");
         // Scanner s = new Scanner(System.in);
         // int year = s.nextInt();
         // checkForLeapYear(year);
