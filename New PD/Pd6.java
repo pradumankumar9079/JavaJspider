@@ -11,5 +11,47 @@ public class Pd6 {
         // true return true else false
         // Note:--> when all condition has to be met go for &&
 
+        /********************************************************************************************* */
+        // System.out.println(10 > 5 && 10 > 20);//--> Two Expression Using Logical
+        // AND(&&)
+        // System.out.println(5 > 2 && 20 > 15);//-->true && ture--> true
+        // System.out.println(5 < 10 && 10 > 6);//-->true && ture--> true
+        // System.out.println(10 > 20 && 10 < 50);// -->flase && ture--> false
+
+        /********************************************************************************************* */
+        // Note:-if First condition false && operator never check for next one return
+        // directly false
+        /********************************************************************************************* */
+
+        /********************************************************************************************* */
+        // System.out.println(10 + 20 && 10 + 50);// --> not work it's not a boolean
+        // expression CTE
+        /********************************************************************************************* */
+
+        /********************************************************************************************* */
+        // Logical OR(||)-->Minimum Two Expression is mendatory--> if one expression
+        // return true if any one of condition expression becomes true else false
+        // Note: --> Any one condition has to be met
+        /********************************************************************************************* */
+
+        /********************************************************************************************* */
+        // System.out.println(10 > 5 || 10 > 20);// --> Two Expression Using Logical
+        // OR(||)
+        // System.out.println(5 > 2 || 20 > 15);// -->true || ture--> true
+        // System.out.println(5 < 10 || 10 > 6);// -->true || ture--> true
+        // System.out.println(10 > 20 || 10 < 50);// -->flase || ture--> true
+        // System.out.println(false || true);// -->flase || ture--> true
+        /********************************************************************************************* */
+
+        /********************************************************************************************* */
+        // Logical Not(!)-->work if we have minimum one expression
+        // Note:--> (!true--> false) vice versa
+        System.out.println(!false); // --> !false-->true
+        System.out.println(!true); // --> !true-->false
+
+        System.out.println(!(10 > 5)); // --> !true-->false
+        System.out.println(!(30 < 20)); // --> !false-->true
+        /********************************************************************************************* */
+
     }
 }
