@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * // Logical Operator (&&--> (don't use single & it's Biitwise),||, !)--> it's
  * Works on Boolean
@@ -53,5 +55,19 @@ public class Pd6 {
         System.out.println(!(30 < 20)); // --> !false-->true
         /********************************************************************************************* */
 
+        // Q1)
+        System.out.println("Enter ur Lucky Number: ");
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+
+        if (num % 3 == 0 && num % 5 != 0) {
+            System.out.println("Sanju");
+        } else if (num % 3 != 0 && num % 5 == 0) {
+            System.out.println("Geeta");
+        } else if (num % 3 == 0 && num % 5 == 0) {
+            System.out.println("Sanju Weds Geeta");
+        } else {
+            System.out.println("Breakup");
+        }
     }
 }
