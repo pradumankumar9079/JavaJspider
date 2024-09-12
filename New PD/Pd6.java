@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Expression and the
  * result also in boolean
  */
+
 public class Pd6 {
 
     public static void main(String[] args) {
