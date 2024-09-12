@@ -125,24 +125,24 @@
  */
 // public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         int val = 5;
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < n; j++) {
-//                 System.out.print(val + " ");
-//             }
-//             System.out.println();
-//             // after each row we are decreasing val by 1
-//             val--;
-//         }
-//     }
-//     // Output:
-//     // 5 5 5 5 5
-//     // 4 4 4 4 4
-//     // 3 3 3 3 3
-//     // 2 2 2 2 2
-//     // 1 1 1 1 1
+// public static void main(String[] args) {
+// int n = 5;
+// int val = 5;
+// for (int i = 0; i < n; i++) {
+// for (int j = 0; j < n; j++) {
+// System.out.print(val + " ");
+// }
+// System.out.println();
+// // after each row we are decreasing val by 1
+// val--;
+// }
+// }
+// // Output:
+// // 5 5 5 5 5
+// // 4 4 4 4 4
+// // 3 3 3 3 3
+// // 2 2 2 2 2
+// // 1 1 1 1 1
 
 // }
 
@@ -151,21 +151,21 @@
  */
 // public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         int val = 1;
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < n; j++) {
-//                 System.out.print(val + " ");
-//                 // after each column we are increasing val by 1
-//                 val++;
-//             }
+// public static void main(String[] args) {
+// int n = 5;
+// int val = 1;
+// for (int i = 0; i < n; i++) {
+// for (int j = 0; j < n; j++) {
+// System.out.print(val + " ");
+// // after each column we are increasing val by 1
+// val++;
+// }
 
-//             // after each row we are setting val to again 1
-//             val = 1;
-//             System.out.println();
-//         }
-//     }
+// // after each row we are setting val to again 1
+// val = 1;
+// System.out.println();
+// }
+// }
 /************************************************************************ */
 // Trace-->
 
@@ -218,26 +218,26 @@
  */
 // public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         char ch = 'a';
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < n; j++) {
-//                 System.out.print(ch + " ");
-//                 // after each column we are increasing ch by 1
-//                 ch++;
-//             }
-//             // after each column we are reintializing to 'a'
-//             ch = 'a';
-//             System.out.println();
-//         }
-//     }
-//     // Output:
-//     // a b c d e
-//     // a b c d e
-//     // a b c d e
-//     // a b c d e
-//     // a b c d e
+// public static void main(String[] args) {
+// int n = 5;
+// char ch = 'a';
+// for (int i = 0; i < n; i++) {
+// for (int j = 0; j < n; j++) {
+// System.out.print(ch + " ");
+// // after each column we are increasing ch by 1
+// ch++;
+// }
+// // after each column we are reintializing to 'a'
+// ch = 'a';
+// System.out.println();
+// }
+// }
+// // Output:
+// // a b c d e
+// // a b c d e
+// // a b c d e
+// // a b c d e
+// // a b c d e
 
 // }
 
@@ -246,26 +246,26 @@
  */
 // public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         int val = 5;
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < n; j++) {
-//                 System.out.print(val + " ");
-//                 // after each column we are Decreasing val by 1
-//                 val--;
-//             }
-//             // after each column we are reintializing to 5
-//             val = 5;
-//             System.out.println();
-//         }
-//     }
-//     // Output:
-//     // 5 4 3 2 1
-//     // 5 4 3 2 1
-//     // 5 4 3 2 1
-//     // 5 4 3 2 1
-//     // 5 4 3 2 1
+// public static void main(String[] args) {
+// int n = 5;
+// int val = 5;
+// for (int i = 0; i < n; i++) {
+// for (int j = 0; j < n; j++) {
+// System.out.print(val + " ");
+// // after each column we are Decreasing val by 1
+// val--;
+// }
+// // after each column we are reintializing to 5
+// val = 5;
+// System.out.println();
+// }
+// }
+// // Output:
+// // 5 4 3 2 1
+// // 5 4 3 2 1
+// // 5 4 3 2 1
+// // 5 4 3 2 1
+// // 5 4 3 2 1
 // }
 
 /**
@@ -273,32 +273,32 @@
  */
 // public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         for (int i = 0; i < n; i++) {
-//             // Checking i is even or odd
-//             if (i % 2 == 0) {
-//                 for (int j = 0; j < n; j++) {
-//                     // if even print 1
-//                     System.out.print(1 + " ");
-//                 }
-//             } else {
-//                 for (int j = 0; j < n; j++) {
-//                     // if odd print 0
-//                     System.out.print(0 + " ");
-//                 }
-//             }
-//             System.out.println();
-//         }
-//         // Output:
-//         // j=0 j=1 j=2 j=3 j=4 j=5(break false)
-//         // i=0 1 1 1 1 1
-//         // i=1 0 0 0 0 0
-//         // i=2 1 1 1 1 1
-//         // i=3 0 0 0 0 0
-//         // i=4 1 1 1 1 1
-//         // i=5 (break false)
-//     }
+// public static void main(String[] args) {
+// int n = 5;
+// for (int i = 0; i < n; i++) {
+// // Checking i is even or odd
+// if (i % 2 == 0) {
+// for (int j = 0; j < n; j++) {
+// // if even print 1
+// System.out.print(1 + " ");
+// }
+// } else {
+// for (int j = 0; j < n; j++) {
+// // if odd print 0
+// System.out.print(0 + " ");
+// }
+// }
+// System.out.println();
+// }
+// // Output:
+// // j=0 j=1 j=2 j=3 j=4 j=5(break false)
+// // i=0 1 1 1 1 1
+// // i=1 0 0 0 0 0
+// // i=2 1 1 1 1 1
+// // i=3 0 0 0 0 0
+// // i=4 1 1 1 1 1
+// // i=5 (break false)
+// }
 // }
 
 /**
@@ -306,78 +306,78 @@
  */
 // public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         for (int i = 0; i < n; i++) {
-//             // Checking i is even or odd --> control row
-//             if (i % 2 == 0) {
-//                 for (int j = 0; j < n; j++) {
-//                     // Checking j is even or odd --> control column
-//                     if (j % 2 == 0) {
-//                         System.out.print(1 + " ");
-//                     } else {
-//                         System.out.print(0 + " ");
-//                     }
-//                 }
-//             } else {
-//                 for (int j = 0; j < n; j++) {
-//                     if (j % 2 == 0) {
-//                         System.out.print(1 + " ");
-//                     } else {
-//                         System.out.print(0 + " ");
-//                     }
-//                 }
-//             }
-//             System.out.println();
-//         }
-//         // Output:
-//         // j=0 j=1 j=2 j=3 j=4 j=5(break false)
-//         // i=1 1 0 1 0 1
-//         // i=2 1 0 1 0 1
-//         // i=3 1 0 1 0 1
-//         // i=4 1 0 1 0 1
-//         // i=5 (break false)
-//     }
+// public static void main(String[] args) {
+// int n = 5;
+// for (int i = 0; i < n; i++) {
+// // Checking i is even or odd --> control row
+// if (i % 2 == 0) {
+// for (int j = 0; j < n; j++) {
+// // Checking j is even or odd --> control column
+// if (j % 2 == 0) {
+// System.out.print(1 + " ");
+// } else {
+// System.out.print(0 + " ");
+// }
+// }
+// } else {
+// for (int j = 0; j < n; j++) {
+// if (j % 2 == 0) {
+// System.out.print(1 + " ");
+// } else {
+// System.out.print(0 + " ");
+// }
+// }
+// }
+// System.out.println();
+// }
+// // Output:
+// // j=0 j=1 j=2 j=3 j=4 j=5(break false)
+// // i=1 1 0 1 0 1
+// // i=2 1 0 1 0 1
+// // i=3 1 0 1 0 1
+// // i=4 1 0 1 0 1
+// // i=5 (break false)
+// }
 // }
 
 /**
  * Pattern 10 -->sandwitch Program
  */
-// public class JavaDay7 {
+public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < n; j++) {
-//                 if (i == 0 || j == 0 || i == n - 1 || j == n - 1) {
-//                     System.out.print("*" + " ");
-//                 } else {
-//                     System.out.print(" " + " ");
-//                 }
-//             }
-//             System.out.println();
-//         }
-//     }
-// }
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0 || j == 0 || i == n - 1 || j == n - 1) {
+                    System.out.print("*" + " ");
+                } else {
+                    System.out.print(" " + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
 
 /**
  * Pattern 11 -->sandwitch Program
  */
 // public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < n; j++) {
-//                 if (i == n / 2 || j == n / 2) {
-//                     System.out.print("*" + " ");
-//                 } else {
-//                     System.out.print(" " + " ");
-//                 }
-//             }
-//             System.out.println();
-//         }
-//     }
+// public static void main(String[] args) {
+// int n = 5;
+// for (int i = 0; i < n; i++) {
+// for (int j = 0; j < n; j++) {
+// if (i == n / 2 || j == n / 2) {
+// System.out.print("*" + " ");
+// } else {
+// System.out.print(" " + " ");
+// }
+// }
+// System.out.println();
+// }
+// }
 // }
 
 /**
@@ -385,27 +385,27 @@
  */
 // public class JavaDay7 {
 
-//     public static void main(String[] args) {
-//         int n = 5;
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < n; j++) {
-//                 if (i == j || (i + j) == n - 1) {// --> focus on this
-//                     System.out.print("*" + " ");
-//                 } else {
-//                     System.out.print(" " + " ");
-//                 }
-//             }
-//             System.out.println();
-//         }
-//     }
+// public static void main(String[] args) {
+// int n = 5;
+// for (int i = 0; i < n; i++) {
+// for (int j = 0; j < n; j++) {
+// if (i == j || (i + j) == n - 1) {// --> focus on this
+// System.out.print("*" + " ");
+// } else {
+// System.out.print(" " + " ");
+// }
+// }
+// System.out.println();
+// }
+// }
 // }
 
 /**
  * Pattern 13 -->sandwitch Program
  */
-public class JavaDay7 {
+// public class JavaDay7 {
 
-    public static void main(String[] args) {
-        int n = 5;
-    }
-}
+// public static void main(String[] args) {
+// int n = 5;
+// }
+// }
