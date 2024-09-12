@@ -60,13 +60,23 @@ public class Pd6 {
         System.out.println("Enter ur Lucky Number: ");
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
+        // if (num % 3 == 0 && num % 5 != 0) {
+        // System.out.println("Sanju");
+        // } else if (num % 3 != 0 && num % 5 == 0) {
+        // System.out.println("Geeta");
+        // } else if (num % 3 == 0 && num % 5 == 0) {
+        // System.out.println("Sanju Weds Geeta");
+        // } else {
+        // System.out.println("Breakup");
+        // }
 
-        if (num % 3 == 0 && num % 5 != 0) {
-            System.out.println("Sanju");
-        } else if (num % 3 != 0 && num % 5 == 0) {
-            System.out.println("Geeta");
-        } else if (num % 3 == 0 && num % 5 == 0) {
+        // Sir one Trace for 15
+        if (num % 3 == 0 && num % 5 == 0) {
             System.out.println("Sanju Weds Geeta");
+        } else if (num % 3 == 0) {
+            System.out.println("Sanju");
+        } else if (num % 5 == 0) {
+            System.out.println("Geeta");
         } else {
             System.out.println("Breakup");
         }
