@@ -74,5 +74,4 @@ public class Pd10 {
         System.out.print(num);
         System.out.println();
     }
-
 }
