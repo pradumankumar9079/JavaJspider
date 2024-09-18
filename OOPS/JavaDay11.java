@@ -79,6 +79,13 @@ public class JavaDay11 {
         System.out.println("Second Occurence: " + b);
         System.out.println("Third Occurence: " + c);
         /*************************************************************** */
+        String str1 = "j2ee";
+        // System.out.println(str1.equals("j2ee"));// true
+        // System.out.println(str1.equals("J2ee"));// false
+        // System.out.println(str1.equals("adv java")); // false
+
+        // System.out.println(str1.equalsIgnoreCase("J2ee")); // true
+        // System.out.println(str1.equalsIgnoreCase("j2ee")); // true
 
         /*************************************************************** */
         // i wanna find all occuerence 1,2,3 -->Important
