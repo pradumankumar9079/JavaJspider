@@ -88,7 +88,7 @@ public class JavaDay11 {
         int f = str.lastIndexOf('e', e - 1); // Searching after Second Occurence With (b-1)
 
         System.out.println("First Occurence from Last: " + d);
-        System.out.println("Second Occurence from Last: " + e); 
+        System.out.println("Second Occurence from Last: " + e);
         System.out.println("Third Occurence from Last: " + f);
         /*************************************************************** */
 
