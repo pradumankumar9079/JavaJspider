@@ -65,6 +65,7 @@ public class JavaDay12 {
 
         /********************************************************************* */
         // trim() --> it will remove starting space and ending space it will won't make
+        // remove leading and trailing whitespace from a string
         // (Any number of space)
         // any changes in between space
         // String str = " Core Java ";
@@ -76,7 +77,8 @@ public class JavaDay12 {
         // split()--> Breakup method
         String str = " Java is an Object Oriented Programming Language";
         String[] arr = str.split(" ");// --> one space and multiple space is Different here
-        // String[] arr1 = str.split('i');// --> it will also work (don't go with single quote won't work)
+        // String[] arr1 = str.split('i');// --> it will also work (don't go with single
+        // quote won't work)
         String[] arr1 = str.split("i");// --> it will also work (don't go with single quote won't work)
 
         /******************************************************************************** */
