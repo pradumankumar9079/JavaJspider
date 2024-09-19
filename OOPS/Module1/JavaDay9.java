@@ -19,7 +19,7 @@ public class JavaDay9 {
         // char[] charArray = { 't', 'i', 'g', 'e', 'r' }; // 5*2(size of char) == 10
         // byte Allocate
 
-        /************************************************************* */
+        /************************** length*********************************** */
         // int arr[] = new int[7];
         // System.out.println("The Size of the Array is: " + arr.length);
 
