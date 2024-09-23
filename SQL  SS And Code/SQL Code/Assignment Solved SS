@@ -1,0 +1,258 @@
+SQL> select ename from emp;
+
+ENAME
+----------
+KING
+BLAKE
+CLARK
+JONES
+SCOTT
+FORD
+SMITH
+ALLEN
+WARD
+MARTIN
+TURNER
+ADAMS
+JAMES
+MILLER
+
+14 rows selected.
+
+SQL> select ename sal from emp;
+
+SAL
+----------
+KING
+BLAKE
+CLARK
+JONES
+SCOTT
+FORD
+SMITH
+ALLEN
+WARD
+MARTIN
+TURNER
+ADAMS
+JAMES
+MILLER
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename,sal from emp
+SQL> /
+
+ENAME             SAL
+---------- ----------
+KING             5000
+BLAKE            2850
+CLARK            2450
+JONES            2975
+SCOTT            3000
+FORD             3000
+SMITH             800
+ALLEN            1600
+WARD             1250
+MARTIN           1250
+TURNER           1500
+ADAMS            1100
+JAMES             950
+MILLER           1300
+
+14 rows selected.
+
+SQL> desc
+Usage: DESCRIBE [schema.]object[@db_link]
+SQL> 
+SQL> ^C
+
+SQL> desc emp;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ EMPNO                                                                                                             NOT NULL NUMBER(4)
+ ENAME                                                                                                                      VARCHAR2(10)
+ JOB                                                                                                                        VARCHAR2(9)
+ MGR                                                                                                                        NUMBER(4)
+ HIREDATE                                                                                                                   DATE
+ SAL                                                                                                                        NUMBER(7,2)
+ COMM                                                                                                                       NUMBER(7,2)
+ DEPTNO                                                                                                            NOT NULL NUMBER(2)
+ MANAGERNAME                                                                                                                VARCHAR2(10)
+ EMP_NUMBER                                                                                                                 NUMBER(4)
+
+SQL> desc employee;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ EID                                                                                                               NOT NULL NUMBER(4)
+ ENAME                                                                                                             NOT NULL VARCHAR2(10)
+ DESIGNATION                                                                                                       NOT NULL VARCHAR2(15)
+ SALARY                                                                                                                     NUMBER(10)
+ BID                                                                                                                        NUMBER(4)
+
+SQL> select ename, comm from emp;
+
+ENAME            COMM
+---------- ----------
+KING
+BLAKE
+CLARK
+JONES
+SCOTT
+FORD
+SMITH
+ALLEN             300
+WARD              500
+MARTIN           1400
+TURNER              0
+ADAMS
+JAMES
+MILLER
+
+14 rows selected.
+
+SQL> desc emp;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ EMPNO                                                                                                             NOT NULL NUMBER(4)
+ ENAME                                                                                                                      VARCHAR2(10)
+ JOB                                                                                                                        VARCHAR2(9)
+ MGR                                                                                                                        NUMBER(4)
+ HIREDATE                                                                                                                   DATE
+ SAL                                                                                                                        NUMBER(7,2)
+ COMM                                                                                                                       NUMBER(7,2)
+ DEPTNO                                                                                                            NOT NULL NUMBER(2)
+ MANAGERNAME                                                                                                                VARCHAR2(10)
+ EMP_NUMBER                                                                                                                 NUMBER(4)
+
+SQL> select empno,deptno from emp;
+
+     EMPNO     DEPTNO
+---------- ----------
+      7839         10
+      7698         30
+      7782         10
+      7566         20
+      7788         20
+      7902         20
+      7369         20
+      7499         30
+      7521         30
+      7654         30
+      7844         30
+      7876         20
+      7900         30
+      7934         10
+
+14 rows selected.
+
+SQL> ed  
+Wrote file afiedt.buf
+
+  1* select emp.*, empno,deptno from emp
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER      EMPNO     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401       7839         10
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401       7698         30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401       7782         10
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401       7566         20
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401       7788         20
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401       7902         20
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401       7369         20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401       7499         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401       7521         30
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401       7654         30
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401       7844         30
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401       7876         20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401       7900         30
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401       7934         10
+
+14 rows selected.
+
+SQL> select ename,hiredate from emp;
+
+ENAME      HIREDATE
+---------- ---------
+KING       17-NOV-81
+BLAKE      01-MAY-81
+CLARK      09-JUN-81
+JONES      02-APR-81
+SCOTT      19-APR-87
+FORD       03-DEC-81
+SMITH      17-DEC-80
+ALLEN      20-FEB-81
+WARD       22-FEB-81
+MARTIN     28-SEP-81
+TURNER     08-SEP-81
+ADAMS      23-MAY-87
+JAMES      03-DEC-81
+MILLER     23-JAN-82
+
+14 rows selected.
+
+SQL> select ename,job from emp;
+
+ENAME      JOB
+---------- ---------
+KING       PRESIDENT
+BLAKE      MANAGER
+CLARK      MANAGER
+JONES      MANAGER
+SCOTT      ANALYST
+FORD       ANALYST
+SMITH      CLERK
+ALLEN      SALESMAN
+WARD       SALESMAN
+MARTIN     SALESMAN
+TURNER     SALESMAN
+ADAMS      CLERK
+JAMES      CLERK
+MILLER     CLERK
+
+14 rows selected.
+
+SQL> select ename, job,sal from emp;
+
+ENAME      JOB              SAL
+---------- --------- ----------
+KING       PRESIDENT       5000
+BLAKE      MANAGER         2850
+CLARK      MANAGER         2450
+JONES      MANAGER         2975
+SCOTT      ANALYST         3000
+FORD       ANALYST         3000
+SMITH      CLERK            800
+ALLEN      SALESMAN        1600
+WARD       SALESMAN        1250
+MARTIN     SALESMAN        1250
+TURNER     SALESMAN        1500
+ADAMS      CLERK           1100
+JAMES      CLERK            950
+MILLER     CLERK           1300
+
+14 rows selected.
+
+SQL> select dname from dept;
+
+DNAME
+------------
+ACCOUNTING
+RESEARCH
+SALES
+OPERATIONS
+
+SQL> select dname, loc from dept;
+
+DNAME        LOC
+------------ -------------
+ACCOUNTING   NEW YORK
+RESEARCH     DALLAS
+SALES        CHICAGO
+OPERATIONS   BOSTON
+
+SQL>        

@@ -1,0 +1,541 @@
+❯ sudo service oracle-xe start
+[sudo] password for kali: 
+❯ sqlsc
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Fri Sep 20 12:54:36 2024
+Version 21.4.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 10g Express Edition Release 10.2.0.1.0 - Production
+
+SQL> select sal,sal+200 from emp;
+
+       SAL    SAL+200
+---------- ----------
+      5000       5200
+      2850       3050
+      2450       2650
+      2975       3175
+      3000       3200
+      3000       3200
+       800       1000
+      1600       1800
+      1250       1450
+      1250       1450
+      1500       1700
+
+       SAL    SAL+200
+---------- ----------
+      1100       1300
+       950       1150
+      1300       1500
+
+14 rows selected.
+
+SQL> select length(ename),ename from emp;
+
+LENGTH(ENAME) ENAME
+------------- ----------
+            4 KING
+            5 BLAKE
+            5 CLARK
+            5 JONES
+            5 SCOTT
+            4 FORD
+            5 SMITH
+            5 ALLEN
+            4 WARD
+            6 MARTIN
+            6 TURNER
+
+LENGTH(ENAME) ENAME
+------------- ----------
+            5 ADAMS
+            5 JAMES
+            6 MILLER
+
+14 rows selected.
+
+SQL> select ename,job,salary,salary*12 from emp; 
+select ename,job,salary,salary*12 from emp
+                        *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename,job,sal,sal*12 from emp
+SQL> /
+
+ENAME      JOB              SAL     SAL*12
+---------- --------- ---------- ----------
+KING       PRESIDENT       5000      60000
+BLAKE      MANAGER         2850      34200
+CLARK      MANAGER         2450      29400
+JONES      MANAGER         2975      35700
+SCOTT      ANALYST         3000      36000
+FORD       ANALYST         3000      36000
+SMITH      CLERK            800       9600
+ALLEN      SALESMAN        1600      19200
+WARD       SALESMAN        1250      15000
+MARTIN     SALESMAN        1250      15000
+TURNER     SALESMAN        1500      18000
+
+ENAME      JOB              SAL     SAL*12
+---------- --------- ---------- ----------
+ADAMS      CLERK           1100      13200
+JAMES      CLERK            950      11400
+MILLER     CLERK           1300      15600
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename,job,sal,sal*12 as AnualSalary from emp
+SQL> /
+
+ENAME      JOB              SAL ANUALSALARY
+---------- --------- ---------- -----------
+KING       PRESIDENT       5000       60000
+BLAKE      MANAGER         2850       34200
+CLARK      MANAGER         2450       29400
+JONES      MANAGER         2975       35700
+SCOTT      ANALYST         3000       36000
+FORD       ANALYST         3000       36000
+SMITH      CLERK            800        9600
+ALLEN      SALESMAN        1600       19200
+WARD       SALESMAN        1250       15000
+MARTIN     SALESMAN        1250       15000
+TURNER     SALESMAN        1500       18000
+
+ENAME      JOB              SAL ANUALSALARY
+---------- --------- ---------- -----------
+ADAMS      CLERK           1100       13200
+JAMES      CLERK            950       11400
+MILLER     CLERK           1300       15600
+
+14 rows selected.
+
+SQL> select ename , sal*6 from emp;
+
+ENAME           SAL*6
+---------- ----------
+KING            30000
+BLAKE           17100
+CLARK           14700
+JONES           17850
+SCOTT           18000
+FORD            18000
+SMITH            4800
+ALLEN            9600
+WARD             7500
+MARTIN           7500
+TURNER           9000
+
+ENAME           SAL*6
+---------- ----------
+ADAMS            6600
+JAMES            5700
+MILLER           7800
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename , sal*6 as half term from emp
+SQL> /
+select ename , sal*6 as half term from emp
+                             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename , sal*6 as halfterm from emp
+SQL> 
+SQL> /
+
+ENAME        HALFTERM
+---------- ----------
+KING            30000
+BLAKE           17100
+CLARK           14700
+JONES           17850
+SCOTT           18000
+FORD            18000
+SMITH            4800
+ALLEN            9600
+WARD             7500
+MARTIN           7500
+TURNER           9000
+
+ENAME        HALFTERM
+---------- ----------
+ADAMS            6600
+JAMES            5700
+MILLER           7800
+
+14 rows selected.
+
+SQL> ed 
+Wrote file afiedt.buf
+
+  1* select ename , sal*6  halfterm from emp
+SQL> /
+
+ENAME        HALFTERM
+---------- ----------
+KING            30000
+BLAKE           17100
+CLARK           14700
+JONES           17850
+SCOTT           18000
+FORD            18000
+SMITH            4800
+ALLEN            9600
+WARD             7500
+MARTIN           7500
+TURNER           9000
+
+ENAME        HALFTERM
+---------- ----------
+ADAMS            6600
+JAMES            5700
+MILLER           7800
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename , sal*6 AS  halfterm from emp
+SQL> /
+
+ENAME        HALFTERM
+---------- ----------
+KING            30000
+BLAKE           17100
+CLARK           14700
+JONES           17850
+SCOTT           18000
+FORD            18000
+SMITH            4800
+ALLEN            9600
+WARD             7500
+MARTIN           7500
+TURNER           9000
+
+ENAME        HALFTERM
+---------- ----------
+ADAMS            6600
+JAMES            5700
+MILLER           7800
+
+14 rows selected.
+
+SQL> select sal as salary, join_date from emp;
+select sal as salary, join_date from emp
+                      *
+ERROR at line 1:
+ORA-00904: "JOIN_DATE": invalid identifier
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sal as salary,hiredate join_date from emp
+SQL> /
+
+    SALARY JOIN_DATE
+---------- ---------
+      5000 17-NOV-81
+      2850 01-MAY-81
+      2450 09-JUN-81
+      2975 02-APR-81
+      3000 19-APR-87
+      3000 03-DEC-81
+       800 17-DEC-80
+      1600 20-FEB-81
+      1250 22-FEB-81
+      1250 28-SEP-81
+      1500 08-SEP-81
+
+    SALARY JOIN_DATE
+---------- ---------
+      1100 23-MAY-87
+       950 03-DEC-81
+      1300 23-JAN-82
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sal as salary,hiredate "join date" from emp
+SQL> /
+
+    SALARY join date
+---------- ---------
+      5000 17-NOV-81
+      2850 01-MAY-81
+      2450 09-JUN-81
+      2975 02-APR-81
+      3000 19-APR-87
+      3000 03-DEC-81
+       800 17-DEC-80
+      1600 20-FEB-81
+      1250 22-FEB-81
+      1250 28-SEP-81
+      1500 08-SEP-81
+
+    SALARY join date
+---------- ---------
+      1100 23-MAY-87
+       950 03-DEC-81
+      1300 23-JAN-82
+
+14 rows selected.
+
+SQL> select ename "Emp Name", sal as salary,hiredate join_date from emp;'
+  2  
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename "Emp Name", sal as salary,hiredate join_date from emp;
+SQL> /
+select ename "Emp Name", sal as salary,hiredate join_date from emp;
+                                                                  *
+ERROR at line 1:
+ORA-00911: invalid character
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename "Emp Name", sal as salary,hiredate join_date from emp
+SQL> /
+
+Emp Name       SALARY JOIN_DATE
+---------- ---------- ---------
+KING             5000 17-NOV-81
+BLAKE            2850 01-MAY-81
+CLARK            2450 09-JUN-81
+JONES            2975 02-APR-81
+SCOTT            3000 19-APR-87
+FORD             3000 03-DEC-81
+SMITH             800 17-DEC-80
+ALLEN            1600 20-FEB-81
+WARD             1250 22-FEB-81
+MARTIN           1250 28-SEP-81
+TURNER           1500 08-SEP-81
+
+Emp Name       SALARY JOIN_DATE
+---------- ---------- ---------
+ADAMS            1100 23-MAY-87
+JAMES             950 03-DEC-81
+MILLER           1300 23-JAN-82
+
+14 rows selected.
+
+SQL> set pages 200 lines 200
+SQL> /
+
+Emp Name       SALARY JOIN_DATE
+---------- ---------- ---------
+KING             5000 17-NOV-81
+BLAKE            2850 01-MAY-81
+CLARK            2450 09-JUN-81
+JONES            2975 02-APR-81
+SCOTT            3000 19-APR-87
+FORD             3000 03-DEC-81
+SMITH             800 17-DEC-80
+ALLEN            1600 20-FEB-81
+WARD             1250 22-FEB-81
+MARTIN           1250 28-SEP-81
+TURNER           1500 08-SEP-81
+ADAMS            1100 23-MAY-87
+JAMES             950 03-DEC-81
+MILLER           1300 23-JAN-82
+
+14 rows selected.
+
+SQL> select ename ,salary salary+100 inc_sal from emp;
+select ename ,salary salary+100 inc_sal from emp
+                           *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename ,sal sal+100 inc_sal from emp
+SQL> /
+select ename ,sal sal+100 inc_sal from emp
+                     *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename ,sal sal+100 as inc _sal from emp
+SQL> /
+select ename ,sal sal+100 as inc _sal from emp
+                     *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed 
+Wrote file afiedt.buf
+
+  1* select ename ,sal ,sal+100 as inc _sal from emp
+SQL> /
+select ename ,sal ,sal+100 as inc _sal from emp
+                                  *
+ERROR at line 1:
+ORA-00911: invalid character
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename ,sal ,sal+100  inc_sal from emp
+SQL> /
+
+ENAME             SAL    INC_SAL
+---------- ---------- ----------
+KING             5000       5100
+BLAKE            2850       2950
+CLARK            2450       2550
+JONES            2975       3075
+SCOTT            3000       3100
+FORD             3000       3100
+SMITH             800        900
+ALLEN            1600       1700
+WARD             1250       1350
+MARTIN           1250       1350
+TURNER           1500       1600
+ADAMS            1100       1200
+JAMES             950       1050
+MILLER           1300       1400
+
+14 rows selected.
+
+SQL> select * ,sal*12 as ann_sal from emp;
+select * ,sal*12 as ann_sal from emp
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * ,sal*12 as ann_sal from emp
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* select emp.*,sal*12 as ann_sal from emp
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER    ANN_SAL
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401      60000
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401      34200
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401      29400
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401      35700
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401      36000
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401      36000
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401       9600
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401      19200
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401      15000
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401      15000
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401      18000
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401      13200
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401      11400
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401      15600
+
+14 rows selected.
+
+SQL> select emp.*, sal+200 as inc_sal,sal-100 "dec sal" from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER    INC_SAL    dec sal
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401       5200       4900
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401       3050       2750
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401       2650       2350
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401       3175       2875
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401       3200       2900
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401       3200       2900
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401       1000        700
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401       1800       1500
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401       1450       1150
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401       1450       1150
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401       1700       1400
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401       1300       1000
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401       1150        850
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401       1500       1200
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select employee.*, sal+200 as inc_sal,sal-100 "dec sal" from employee
+  2  /
+select employee.*, sal+200 as inc_sal,sal-100 "dec sal" from employee
+                                      *
+ERROR at line 1:
+ORA-00904: "SAL": invalid identifier
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select emp.*, sal+200 as inc_sal,sal-100 "dec sal" from empl
+SQL> 
+SQL> /
+select emp.*, sal+200 as inc_sal,sal-100 "dec sal" from empl
+                                                        *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select emp.*, sal+200 as inc_sal,sal-100 "dec sal" from emp
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER    INC_SAL    dec sal
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401       5200       4900
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401       3050       2750
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401       2650       2350
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401       3175       2875
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401       3200       2900
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401       3200       2900
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401       1000        700
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401       1800       1500
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401       1450       1150
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401       1450       1150
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401       1700       1400
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401       1300       1000
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401       1150        850
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401       1500       1200
+
+14 rows selected.
+
+SQL> 
