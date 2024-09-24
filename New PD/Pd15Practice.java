@@ -5,25 +5,25 @@
 // import java.util.Scanner;
 
 // public class Pd15Practice {
-// public static void main(String[] args) {
-// System.out.println("Enter Number: ");
-// Scanner sc = new Scanner(System.in);
-// int num = sc.nextInt();
+//     public static void main(String[] args) {
+//         System.out.println("Enter Number: ");
+//          Scanner sc = new Scanner(System.in);
+//         int num = sc.nextInt();
 
-// boolean flag = false;
-// for (int i = 2; i < num; i++) {
-// if (num % i == 0) {
-// flag = true;
-// break;
-// }
-// }
-// if (flag == true) {
-// System.out.println(num + " is Not a Prime Number");
-// } else {
-// System.out.println(num + " is a Prime Number");
-// }
+//         boolean flag = false;
+//         for (int i = 2; i < num; i++) {
+//             if (num % i == 0) {
+//                 flag = true;
+//                 break;
+//             }
+//         }
+//         if (flag == true) {
+//             System.out.println(num + " is Not a Prime Number");
+//         } else {
+//             System.out.println(num + " is a Prime Number");
+//         }
 
-// }
+//     }
 // }
 
 /**
@@ -41,7 +41,9 @@ public class Pd15Practice {
         return fact;
     }
 
-    public static void main(String[] args) {
+    static public void main(String[] a) {// --> Swapping Access Modifier and Non
+        // Access Modifier Possible
+        // we can also change args to any other name but don't remove bracket Error
         System.out.println("Enter Number: ");
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
