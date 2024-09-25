@@ -1,0 +1,537 @@
+SQL> select 'Hi' || ename from emp;
+
+'HI'||ENAME
+------------
+HiKING
+HiBLAKE
+HiCLARK
+HiJONES
+HiSCOTT
+HiFORD
+HiSMITH
+HiALLEN
+HiWARD
+HiMARTIN
+HiTURNER
+
+'HI'||ENAME
+------------
+HiADAMS
+HiJAMES
+HiMILLER
+
+14 rows selected.
+
+SQL>  select ename || job 
+  2  from emp;
+
+ENAME||JOB
+-------------------
+KINGPRESIDENT
+BLAKEMANAGER
+CLARKMANAGER
+JONESMANAGER
+SCOTTANALYST
+FORDANALYST
+SMITHCLERK
+ALLENSALESMAN
+WARDSALESMAN
+MARTINSALESMAN
+TURNERSALESMAN
+
+ENAME||JOB
+-------------------
+ADAMSCLERK
+JAMESCLERK
+MILLERCLERK
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1   select ename||' ' || job
+  2* from emp
+SQL> /
+
+ENAME||''||JOB
+--------------------
+KING PRESIDENT
+BLAKE MANAGER
+CLARK MANAGER
+JONES MANAGER
+SCOTT ANALYST
+FORD ANALYST
+SMITH CLERK
+ALLEN SALESMAN
+WARD SALESMAN
+MARTIN SALESMAN
+TURNER SALESMAN
+
+ENAME||''||JOB
+--------------------
+ADAMS CLERK
+JAMES CLERK
+MILLER CLERK
+
+14 rows selected.
+
+SQL> ^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[                                     
+SP2-0734: unknown command beginning "   est of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1   select ename||' ' || job as fullname
+  2* from emp
+SQL> /
+
+FULLNAME
+--------------------
+KING PRESIDENT
+BLAKE MANAGER
+CLARK MANAGER
+JONES MANAGER
+SCOTT ANALYST
+FORD ANALYST
+SMITH CLERK
+ALLEN SALESMAN
+WARD SALESMAN
+MARTIN SALESMAN
+TURNER SALESMAN
+
+FULLNAME
+--------------------
+ADAMS CLERK
+JAMES CLERK
+MILLER CLERK
+
+14 rows selected.
+
+SQL> select 'Hi' ||' ' ||ename                                     
+  2  from emp;
+
+'HI'||''||ENA
+-------------
+Hi KING
+Hi BLAKE
+Hi CLARK
+Hi JONES
+Hi SCOTT
+Hi FORD
+Hi SMITH
+Hi ALLEN
+Hi WARD
+Hi MARTIN
+Hi TURNER
+
+'HI'||''||ENA
+-------------
+Hi ADAMS
+Hi JAMES
+Hi MILLER
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi' ||' ' ||ename as greet
+  2* from emp
+SQL> /
+
+GREET
+-------------
+Hi KING
+Hi BLAKE
+Hi CLARK
+Hi JONES
+Hi SCOTT
+Hi FORD
+Hi SMITH
+Hi ALLEN
+Hi WARD
+Hi MARTIN
+Hi TURNER
+
+GREET
+-------------
+Hi ADAMS
+Hi JAMES
+Hi MILLER
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi' ||' ' ||ename as greetings
+  2* from emp
+SQL> /
+
+GREETINGS
+-------------
+Hi KING
+Hi BLAKE
+Hi CLARK
+Hi JONES
+Hi SCOTT
+Hi FORD
+Hi SMITH
+Hi ALLEN
+Hi WARD
+Hi MARTIN
+Hi TURNER
+
+GREETINGS
+-------------
+Hi ADAMS
+Hi JAMES
+Hi MILLER
+
+14 rows selected.
+
+SQL> select 'Hi' || ' '||ename|| ' How are you!'
+  2  from emp
+  3  where job = 'CLERK';
+
+'HI'||''||ENAME||'HOWAREYO
+--------------------------
+Hi SMITH How are you!
+Hi ADAMS How are you!
+Hi JAMES How are you!
+Hi MILLER How are you!
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi' || ' '||ename|| ' How are you!' as greetings
+  2  from emp
+  3* where job = 'CLERK'
+SQL> /
+
+GREETINGS
+--------------------------
+Hi SMITH How are you!
+Hi ADAMS How are you!
+Hi JAMES How are you!
+Hi MILLER How are you!
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename|| ' How are you!' as greetings
+  2  from emp
+  3* where job = 'CLERK'
+SQL> /
+
+GREETINGS
+--------------------------
+Hi SMITH How are you!
+Hi ADAMS How are you!
+Hi JAMES How are you!
+Hi MILLER How are you!
+
+SQL>                                               ^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[B^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D
+SP2-0734: unknown command beginninest of line ignored.
+SQL> select 'Hi '||ename||' congrats your salary ' || sal || 'has incremented to ' || sal+200 
+  2  from emp;
+select 'Hi '||ename||' congrats your salary ' || sal || 'has incremented to ' || sal+200
+                                                                               *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename||' congrats your salary ' || sal || 'has incremented to ' ||sal+200
+  2* from emp
+SQL> /
+select 'Hi '||ename||' congrats your salary ' || sal || 'has incremented to ' ||sal+200
+                                                                               *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> ed 
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename||' congrats your salary ' || sal || 'has incremented to ' ||(sal+200)
+  2* from emp
+SQL> /
+
+'HI'||ENAME||'CONGRATSYOURSALARY'||SAL||'HASINCREMENTEDTO'||(SAL+200)
+--------------------------------------------------------------------------------
+Hi KING congrats your salary 5000has incremented to 5200
+Hi BLAKE congrats your salary 2850has incremented to 3050
+Hi CLARK congrats your salary 2450has incremented to 2650
+Hi JONES congrats your salary 2975has incremented to 3175
+Hi SCOTT congrats your salary 3000has incremented to 3200
+Hi FORD congrats your salary 3000has incremented to 3200
+Hi SMITH congrats your salary 800has incremented to 1000
+Hi ALLEN congrats your salary 1600has incremented to 1800
+Hi WARD congrats your salary 1250has incremented to 1450
+Hi MARTIN congrats your salary 1250has incremented to 1450
+Hi TURNER congrats your salary 1500has incremented to 1700
+
+'HI'||ENAME||'CONGRATSYOURSALARY'||SAL||'HASINCREMENTEDTO'||(SAL+200)
+--------------------------------------------------------------------------------
+Hi ADAMS congrats your salary 1100has incremented to 1300
+Hi JAMES congrats your salary 950has incremented to 1150
+Hi MILLER congrats your salary 1300has incremented to 1500
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename||' congrats your salary ' || sal || ' has incremented to ' ||(sal+200)
+  2* from emp
+SQL> /
+
+'HI'||ENAME||'CONGRATSYOURSALARY'||SAL||'HASINCREMENTEDTO'||(SAL+200)
+--------------------------------------------------------------------------------
+Hi KING congrats your salary 5000 has incremented to 5200
+Hi BLAKE congrats your salary 2850 has incremented to 3050
+Hi CLARK congrats your salary 2450 has incremented to 2650
+Hi JONES congrats your salary 2975 has incremented to 3175
+Hi SCOTT congrats your salary 3000 has incremented to 3200
+Hi FORD congrats your salary 3000 has incremented to 3200
+Hi SMITH congrats your salary 800 has incremented to 1000
+Hi ALLEN congrats your salary 1600 has incremented to 1800
+Hi WARD congrats your salary 1250 has incremented to 1450
+Hi MARTIN congrats your salary 1250 has incremented to 1450
+Hi TURNER congrats your salary 1500 has incremented to 1700
+
+'HI'||ENAME||'CONGRATSYOURSALARY'||SAL||'HASINCREMENTEDTO'||(SAL+200)
+--------------------------------------------------------------------------------
+Hi ADAMS congrats your salary 1100 has incremented to 1300
+Hi JAMES congrats your salary 950 has incremented to 1150
+Hi MILLER congrats your salary 1300 has incremented to 1500
+
+14 rows selected.
+
+SQL> ed 
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename||' its very unfortunate your salary ' || sal || ' has decremented to ' ||(sal-100)
+  2* from emp
+SQL> /
+
+'HI'||ENAME||'ITSVERYUNFORTUNATEYOURSALARY'||SAL||'HASDECREMENTEDTO'||(SAL-100)
+--------------------------------------------------------------------------------
+Hi KING its very unfortunate your salary 5000 has decremented to 4900
+Hi BLAKE its very unfortunate your salary 2850 has decremented to 2750
+Hi CLARK its very unfortunate your salary 2450 has decremented to 2350
+Hi JONES its very unfortunate your salary 2975 has decremented to 2875
+Hi SCOTT its very unfortunate your salary 3000 has decremented to 2900
+Hi FORD its very unfortunate your salary 3000 has decremented to 2900
+Hi SMITH its very unfortunate your salary 800 has decremented to 700
+Hi ALLEN its very unfortunate your salary 1600 has decremented to 1500
+Hi WARD its very unfortunate your salary 1250 has decremented to 1150
+Hi MARTIN its very unfortunate your salary 1250 has decremented to 1150
+Hi TURNER its very unfortunate your salary 1500 has decremented to 1400
+
+'HI'||ENAME||'ITSVERYUNFORTUNATEYOURSALARY'||SAL||'HASDECREMENTEDTO'||(SAL-100)
+--------------------------------------------------------------------------------
+Hi ADAMS its very unfortunate your salary 1100 has decremented to 1000
+Hi JAMES its very unfortunate your salary 950 has decremented to 850
+Hi MILLER its very unfortunate your salary 1300 has decremented to 1200
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename||' its very unfortunate your salary ' || sal || ' has decremented to ' ||(sal-100) as sorry
+  2* from emp
+SQL> /
+
+SORRY
+--------------------------------------------------------------------------------
+Hi KING its very unfortunate your salary 5000 has decremented to 4900
+Hi BLAKE its very unfortunate your salary 2850 has decremented to 2750
+Hi CLARK its very unfortunate your salary 2450 has decremented to 2350
+Hi JONES its very unfortunate your salary 2975 has decremented to 2875
+Hi SCOTT its very unfortunate your salary 3000 has decremented to 2900
+Hi FORD its very unfortunate your salary 3000 has decremented to 2900
+Hi SMITH its very unfortunate your salary 800 has decremented to 700
+Hi ALLEN its very unfortunate your salary 1600 has decremented to 1500
+Hi WARD its very unfortunate your salary 1250 has decremented to 1150
+Hi MARTIN its very unfortunate your salary 1250 has decremented to 1150
+Hi TURNER its very unfortunate your salary 1500 has decremented to 1400
+
+SORRY
+--------------------------------------------------------------------------------
+Hi ADAMS its very unfortunate your salary 1100 has decremented to 1000
+Hi JAMES its very unfortunate your salary 950 has decremented to 850
+Hi MILLER its very unfortunate your salary 1300 has decremented to 1200
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename||' its very unfortunate your salary ' || sal || ' has decremented to ' ||(sal-100)  sorrymail
+  2* from emp
+SQL> /
+
+SORRYMAIL
+--------------------------------------------------------------------------------
+Hi KING its very unfortunate your salary 5000 has decremented to 4900
+Hi BLAKE its very unfortunate your salary 2850 has decremented to 2750
+Hi CLARK its very unfortunate your salary 2450 has decremented to 2350
+Hi JONES its very unfortunate your salary 2975 has decremented to 2875
+Hi SCOTT its very unfortunate your salary 3000 has decremented to 2900
+Hi FORD its very unfortunate your salary 3000 has decremented to 2900
+Hi SMITH its very unfortunate your salary 800 has decremented to 700
+Hi ALLEN its very unfortunate your salary 1600 has decremented to 1500
+Hi WARD its very unfortunate your salary 1250 has decremented to 1150
+Hi MARTIN its very unfortunate your salary 1250 has decremented to 1150
+Hi TURNER its very unfortunate your salary 1500 has decremented to 1400
+
+SORRYMAIL
+--------------------------------------------------------------------------------
+Hi ADAMS its very unfortunate your salary 1100 has decremented to 1000
+Hi JAMES its very unfortunate your salary 950 has decremented to 850
+Hi MILLER its very unfortunate your salary 1300 has decremented to 1200
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename||' its very unfortunate your salary ' || sal || ' has decremented to ' ||(sal-100)  sorrymail
+  2  from emp
+  3* where deptno=20
+SQL> /
+
+SORRYMAIL
+--------------------------------------------------------------------------------
+Hi JONES its very unfortunate your salary 2975 has decremented to 2875
+Hi SCOTT its very unfortunate your salary 3000 has decremented to 2900
+Hi FORD its very unfortunate your salary 3000 has decremented to 2900
+Hi SMITH its very unfortunate your salary 800 has decremented to 700
+Hi ADAMS its very unfortunate your salary 1100 has decremented to 1000
+
+SQL> select * from emp
+  2  where ename = 'SMAITH' || ename='ALLEN';     
+where ename = 'SMAITH' || ename='ALLEN'
+                               *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select * from emp
+  2* where ename = 'SMAITH'| ename='ALLEN'
+SQL> /
+where ename = 'SMAITH'| ename='ALLEN'
+                      *
+ERROR at line 2:
+ORA-00996: the concatenate operator is ||, not |
+
+
+SQL> ^[[D                                                                     ed
+SP2-0734: unknown command beginning "        ..." - rest of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select * from emp
+  2* where ename = 'SMAITH' OR ename='ALLEN'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300
+        30                   401
+
+
+SQL> set lines 200 pages 200
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select * from emp
+  2* where ename = 'SMITH' OR ename='ALLEN'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+
+SQL> select ename , sal                                                             
+  2  from emp
+  3  where sal >1000 and sal<2500;
+
+ENAME             SAL
+---------- ----------
+CLARK            2450
+ALLEN            1600
+WARD             1250
+MARTIN           1250
+TURNER           1500
+ADAMS            1100
+MILLER           1300
+
+7 rows selected.
+
+SQL> select * 
+  2  from emp
+  3  where job='CLERK' AND DEPTNO=20;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+
+SQL> select * 
+  2  from emp
+  3  where job='CLERK' AND DEPTNO=20 AND sal<900;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+
+SQL> select *               
+  2  from emp
+  3  where hiredate='01-jan-81' And hiredate<='31-DEC-81';
+
+no rows selected
+
+SQL> rf
+SP2-0042: unknown command "rf" - rest of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate>='01-jan-81' And hiredate<='31-DEC-81'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+10 rows selected.
+
+SQL> 

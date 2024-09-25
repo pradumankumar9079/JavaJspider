@@ -1,0 +1,383 @@
+SQL> select ename || job
+  2  from emp
+  3  ;
+
+ENAME||JOB
+-------------------
+KINGPRESIDENT
+BLAKEMANAGER
+CLARKMANAGER
+JONESMANAGER
+SCOTTANALYST
+FORDANALYST
+SMITHCLERK
+ALLENSALESMAN
+WARDSALESMAN
+MARTINSALESMAN
+TURNERSALESMAN
+
+ENAME||JOB
+-------------------
+ADAMSCLERK
+JAMESCLERK
+MILLERCLERK
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select ename ||' ' || job
+  2* from emp
+  3  /
+
+ENAME||''||JOB
+--------------------
+KING PRESIDENT
+BLAKE MANAGER
+CLARK MANAGER
+JONES MANAGER
+SCOTT ANALYST
+FORD ANALYST
+SMITH CLERK
+ALLEN SALESMAN
+WARD SALESMAN
+MARTIN SALESMAN
+TURNER SALESMAN
+
+ENAME||''||JOB
+--------------------
+ADAMS CLERK
+JAMES CLERK
+MILLER CLERK
+
+14 rows selected.
+
+SQL> select 'Hi' || ename 
+  2  from emp
+  3  ;
+
+'HI'||ENAME
+------------
+HiKING
+HiBLAKE
+HiCLARK
+HiJONES
+HiSCOTT
+HiFORD
+HiSMITH
+HiALLEN
+HiWARD
+HiMARTIN
+HiTURNER
+
+'HI'||ENAME
+------------
+HiADAMS
+HiJAMES
+HiMILLER
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi ' || ename
+  2* from emp
+  3  /
+
+'HI'||ENAME
+-------------
+Hi KING
+Hi BLAKE
+Hi CLARK
+Hi JONES
+Hi SCOTT
+Hi FORD
+Hi SMITH
+Hi ALLEN
+Hi WARD
+Hi MARTIN
+Hi TURNER
+
+'HI'||ENAME
+-------------
+Hi ADAMS
+Hi JAMES
+Hi MILLER
+
+14 rows selected.
+
+SQL> select 'Hi ' ||ename
+  2  from emp
+  3  where job='CLERK';
+
+'HI'||ENAME
+-------------
+Hi SMITH
+Hi ADAMS
+Hi JAMES
+Hi MILLER
+
+SQL> select * 
+  2        
+SQL> select 'Hi '||ename|| ' congrats your salary '||sal || ' has incremented to '||(sal+200)
+  2  from emp;
+
+'HI'||ENAME||'CONGRATSYOURSALARY'||SAL||'HASINCREMENTEDTO'||(SAL+200)
+--------------------------------------------------------------------------------
+Hi KING congrats your salary 5000 has incremented to 5200
+Hi BLAKE congrats your salary 2850 has incremented to 3050
+Hi CLARK congrats your salary 2450 has incremented to 2650
+Hi JONES congrats your salary 2975 has incremented to 3175
+Hi SCOTT congrats your salary 3000 has incremented to 3200
+Hi FORD congrats your salary 3000 has incremented to 3200
+Hi SMITH congrats your salary 800 has incremented to 1000
+Hi ALLEN congrats your salary 1600 has incremented to 1800
+Hi WARD congrats your salary 1250 has incremented to 1450
+Hi MARTIN congrats your salary 1250 has incremented to 1450
+Hi TURNER congrats your salary 1500 has incremented to 1700
+
+'HI'||ENAME||'CONGRATSYOURSALARY'||SAL||'HASINCREMENTEDTO'||(SAL+200)
+--------------------------------------------------------------------------------
+Hi ADAMS congrats your salary 1100 has incremented to 1300
+Hi JAMES congrats your salary 950 has incremented to 1150
+Hi MILLER congrats your salary 1300 has incremented to 1500
+
+14 rows selected.
+
+SQL> de
+SP2-0042: unknown command "de" - rest of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select 'Hi '||ename|| ' unfortunatly your salary decremented ▒ '|| sal || ' has incremented to '||(sal+200)
+  2* from emp
+SQL> select ' Hi '||ename||' unfortunatly your salary '|| sal || ' has Decremented to '|| sal-100
+  2  from emp;
+select ' Hi '||ename||' unfortunatly your salary '|| sal || ' has Decremented to '|| sal-100
+                                                                                   *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select ' Hi '||ename||' unfortunatly your salary '|| sal || ' has Decremented to '|| (sal-100)
+  2* from emp
+SQL> /
+
+'HI'||ENAME||'UNFORTUNATLYYOURSALARY'||SAL||'HASDECREMENTEDTO'||(SAL-100)
+--------------------------------------------------------------------------------
+ Hi KING unfortunatly your salary 5000 has Decremented to 4900
+ Hi BLAKE unfortunatly your salary 2850 has Decremented to 2750
+ Hi CLARK unfortunatly your salary 2450 has Decremented to 2350
+ Hi JONES unfortunatly your salary 2975 has Decremented to 2875
+ Hi SCOTT unfortunatly your salary 3000 has Decremented to 2900
+ Hi FORD unfortunatly your salary 3000 has Decremented to 2900
+ Hi SMITH unfortunatly your salary 800 has Decremented to 700
+ Hi ALLEN unfortunatly your salary 1600 has Decremented to 1500
+ Hi WARD unfortunatly your salary 1250 has Decremented to 1150
+ Hi MARTIN unfortunatly your salary 1250 has Decremented to 1150
+ Hi TURNER unfortunatly your salary 1500 has Decremented to 1400
+
+'HI'||ENAME||'UNFORTUNATLYYOURSALARY'||SAL||'HASDECREMENTEDTO'||(SAL-100)
+--------------------------------------------------------------------------------
+ Hi ADAMS unfortunatly your salary 1100 has Decremented to 1000
+ Hi JAMES unfortunatly your salary 950 has Decremented to 850
+ Hi MILLER unfortunatly your salary 1300 has Decremented to 1200
+
+14 rows selected.
+
+SQL> select ename , sal
+  2  from emp
+  3  where sal>1000 and sal<2500;
+
+ENAME             SAL
+---------- ----------
+CLARK            2450
+ALLEN            1600
+WARD             1250
+MARTIN           1250
+TURNER           1500
+ADAMS            1100
+MILLER           1300
+
+7 rows selected.
+
+SQL> select * 
+  2  from emp
+  3  where job = 'CLERK' anddeptno=20;
+where job = 'CLERK' anddeptno=20
+                    *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where job = 'CLERK' and deptno=20
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800
+        20                   401
+
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100
+        20                   401
+
+
+SQL> set pages 200 lines 200
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where job = 'CLERK' and deptno=20 and sal<900
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+
+SQL> select *
+  2  from emp
+  3  where hiredate>='1-jan-1981 and hiredate<='30-jan-1981';
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate>='1-jan-1981' and hiredate<='30-jan-1981'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate>='1-jan-1981' and hiredate<='30-DEC-1981'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+10 rows selected.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from emp
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+14 rows selected.
+
+SQL> select * 
+  2  from emp
+  3  where hiredate>='1-jan-1481' and hiredate<='30-dec-1481';
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate>='1-jan-1881' and hiredate<='30-dec-1881'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate>='1-jan-1881' and hiredate<='30-dec-1981'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+11 rows selected.
+
+SQL>  
