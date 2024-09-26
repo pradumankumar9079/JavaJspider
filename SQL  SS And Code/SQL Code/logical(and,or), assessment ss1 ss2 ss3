@@ -1,0 +1,598 @@
+SQL> select *
+  2  from emp
+  3  where job='SALESMAN' or sal>3000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000
+        10                   401
+
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300
+        30                   401
+
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500
+        30                   401
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- ----------
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400
+        30                   401
+
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0
+        30                   401
+
+
+SQL> set pages 200 lines 200
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+
+SQL> select *                                                                                  
+  2  from emp
+  3  where ename='SMITH' or ename='ALLEN' or ename='WARD';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename='SMITH' or ename='ALLEN' or ename='WARD' or ename='JAMES'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+SQL>  select *
+  2  from emp
+  3  where hiredate<'1-jan-81' or hiredate>'30-dec-81';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1   select *
+  2  from emp
+  3* where hiredate<='1-jan-81' or hiredate>='30-dec-81'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+SQL> ed                                                                                 
+Wrote file afiedt.buf
+
+  1   select *
+  2  from emp
+  3* where hiredate<'1-jan-81' or hiredate>'30-dec-81'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+SQL> select * from emp
+  2  where job='SALESMAN' or job='CLERK' and deptno=30;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select enmae,job, deptno from emp
+  2* where job='SALESMAN' or job='CLERK' and deptno=30
+SQL> 
+SQL> /
+select enmae,job, deptno from emp
+       *
+ERROR at line 1:
+ORA-00904: "ENMAE": invalid identifier
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select ename,job, deptno from emp
+  2* where job='SALESMAN' or job='CLERK' and deptno=30
+SQL> /
+
+ENAME      JOB           DEPTNO
+---------- --------- ----------
+ALLEN      SALESMAN          30
+WARD       SALESMAN          30
+MARTIN     SALESMAN          30
+TURNER     SALESMAN          30
+JAMES      CLERK             30
+
+SQL> 
+SQL> ed      
+Wrote file afiedt.buf
+
+  1  select ename,job, deptno from emp
+  2* where (job='SALESMAN' or job='CLERK') and deptno=30
+SQL> /
+
+ENAME      JOB           DEPTNO
+---------- --------- ----------
+ALLEN      SALESMAN          30
+WARD       SALESMAN          30
+MARTIN     SALESMAN          30
+TURNER     SALESMAN          30
+JAMES      CLERK             30
+
+SQL> select *
+  2  from emp
+  3  where sal<1000 or sal>1500 and job='CLERK' or job='SALESMAN'; 
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+6 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where (sal<1000 or sal>1500) and (job='CLERK' or job='SALESMAN')
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+SQL> select ename , sal*12 as Anualsalary 
+  2  from emp;
+
+ENAME      ANUALSALARY
+---------- -----------
+KING             60000
+BLAKE            34200
+CLARK            29400
+JONES            35700
+SCOTT            36000
+FORD             36000
+SMITH             9600
+ALLEN            19200
+WARD             15000
+MARTIN           15000
+TURNER           18000
+ADAMS            13200
+JAMES            11400
+MILLER           15600
+
+14 rows selected.
+
+SQL> select ename , job
+  2  from emp
+  3  e
+  4  
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename , job, sal*6 'Half_term' from emp
+SQL> /
+select ename , job, sal*6 'Half_term' from emp
+                          *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename , job, sal*6 "Half_term" from emp
+SQL> /
+
+ENAME      JOB        Half_term
+---------- --------- ----------
+KING       PRESIDENT      30000
+BLAKE      MANAGER        17100
+CLARK      MANAGER        14700
+JONES      MANAGER        17850
+SCOTT      ANALYST        18000
+FORD       ANALYST        18000
+SMITH      CLERK           4800
+ALLEN      SALESMAN        9600
+WARD       SALESMAN        7500
+MARTIN     SALESMAN        7500
+TURNER     SALESMAN        9000
+ADAMS      CLERK           6600
+JAMES      CLERK           5700
+MILLER     CLERK           7800
+
+14 rows selected.
+
+SQL> select emp.* ,sal+2000 as AnualBonus from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER ANUALBONUS
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401       7000
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401       4850
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401       4450
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401       4975
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401       5000
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401       5000
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401       2800
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401       3600
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401       3250
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401       3250
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401       3500
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401       3100
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401       2950
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401       3300
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select emp.* ,2000 from emp
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER       2000
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401       2000
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401       2000
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401       2000
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401       2000
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401       2000
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401       2000
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401       2000
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401       2000
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401       2000
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401       2000
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401       2000
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401       2000
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401       2000
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401       2000
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select emp.* ||2000 from emp
+SQL> /
+select emp.* ||2000 from emp
+             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select emp.* ||"2000" from emp
+SQL> /
+select emp.* ||"2000" from emp
+             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed     
+Wrote file afiedt.buf
+
+  1* select emp.* ||'2000' from emp
+SQL> /
+select emp.* ||'2000' from emp
+             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename ||'2000' from emp
+SQL> /
+
+ENAME||'2000'
+--------------
+KING2000
+BLAKE2000
+CLARK2000
+JONES2000
+SCOTT2000
+FORD2000
+SMITH2000
+ALLEN2000
+WARD2000
+MARTIN2000
+TURNER2000
+ADAMS2000
+JAMES2000
+MILLER2000
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename ||' 2000' as bonus from emp
+SQL> /
+
+BONUS
+---------------
+KING 2000
+BLAKE 2000
+CLARK 2000
+JONES 2000
+SCOTT 2000
+FORD 2000
+SMITH 2000
+ALLEN 2000
+WARD 2000
+MARTIN 2000
+TURNER 2000
+ADAMS 2000
+JAMES 2000
+MILLER 2000
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename ||' 2000' as bonus from emp
+  2  
+SQL> /
+
+BONUS
+---------------
+KING 2000
+BLAKE 2000
+CLARK 2000
+JONES 2000
+SCOTT 2000
+FORD 2000
+SMITH 2000
+ALLEN 2000
+WARD 2000
+MARTIN 2000
+TURNER 2000
+ADAMS 2000
+JAMES 2000
+MILLER 2000
+
+14 rows selected.
+
+SQL>  8ugv ed
+SP2-0042: unknown command "8ugv ed" - rest of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename,job ||' 2000' as bonus from emp
+SQL> /
+
+ENAME      BONUS
+---------- --------------
+KING       PRESIDENT 2000
+BLAKE      MANAGER 2000
+CLARK      MANAGER 2000
+JONES      MANAGER 2000
+SCOTT      ANALYST 2000
+FORD       ANALYST 2000
+SMITH      CLERK 2000
+ALLEN      SALESMAN 2000
+WARD       SALESMAN 2000
+MARTIN     SALESMAN 2000
+TURNER     SALESMAN 2000
+ADAMS      CLERK 2000
+JAMES      CLERK 2000
+MILLER     CLERK 2000
+
+14 rows selected.
+
+SQL> select ename, sal , sal+(sal*10/100) as hike 
+  2  from emp;
+
+ENAME             SAL       HIKE
+---------- ---------- ----------
+KING             5000       5500
+BLAKE            2850       3135
+CLARK            2450       2695
+JONES            2975     3272.5
+SCOTT            3000       3300
+FORD             3000       3300
+SMITH             800        880
+ALLEN            1600       1760
+WARD             1250       1375
+MARTIN           1250       1375
+TURNER           1500       1650
+ADAMS            1100       1210
+JAMES             950       1045
+MILLER           1300       1430
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select ename, sal , sal-(sal*25/100) as deduction
+  2* from emp
+SQL> /
+
+ENAME             SAL  DEDUCTION
+---------- ---------- ----------
+KING             5000       3750
+BLAKE            2850     2137.5
+CLARK            2450     1837.5
+JONES            2975    2231.25
+SCOTT            3000       2250
+FORD             3000       2250
+SMITH             800        600
+ALLEN            1600       1200
+WARD             1250      937.5
+MARTIN           1250      937.5
+TURNER           1500       1125
+ADAMS            1100        825
+JAMES             950      712.5
+MILLER           1300        975
+
+14 rows selected.
+
+SQL> select ename, sal , sal+50 as salAftermonthhike from emp;
+
+ENAME             SAL SALAFTERMONTHHIKE
+---------- ---------- -----------------
+KING             5000              5050
+BLAKE            2850              2900
+CLARK            2450              2500
+JONES            2975              3025
+SCOTT            3000              3050
+FORD             3000              3050
+SMITH             800               850
+ALLEN            1600              1650
+WARD             1250              1300
+MARTIN           1250              1300
+TURNER           1500              1550
+ADAMS            1100              1150
+JAMES             950              1000
+MILLER           1300              1350
+
+14 rows selected.
+
+SQL> select ename, sal, sal-(sal*10/100) as anualDeductedsalary from emp
+  2  ;
+
+ENAME             SAL ANUALDEDUCTEDSALARY
+---------- ---------- -------------------
+KING             5000                4500
+BLAKE            2850                2565
+CLARK            2450                2205
+JONES            2975              2677.5
+SCOTT            3000                2700
+FORD             3000                2700
+SMITH             800                 720
+ALLEN            1600                1440
+WARD             1250                1125
+MARTIN           1250                1125
+TURNER           1500                1350
+ADAMS            1100                 990
+JAMES             950                 855
+MILLER           1300                1170
+
+14 rows selected.
+
+SQL> select sal , sal+comm as totalsalary from emp;
+
+       SAL TOTALSALARY
+---------- -----------
+      5000
+      2850
+      2450
+      2975
+      3000
+      3000
+       800
+      1600        1900
+      1250        1750
+      1250        2650
+      1500        1500
+      1100
+       950
+      1300
+
+14 rows selected.
+
+SQL> select emp.* , sal*12 as anualsalary from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER ANUALSALARY
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ---------- -----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401       60000
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401       34200
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401       29400
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401       35700
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401       36000
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401       36000
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401        9600
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401       19200
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401       15000
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401       15000
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401       18000
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401       13200
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401       11400
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401       15600
+
+14 rows selected.
+
+SQL> select ename, job , sal-100 as afterpenalty from emp;
+
+ENAME      JOB       AFTERPENALTY
+---------- --------- ------------
+KING       PRESIDENT         4900
+BLAKE      MANAGER           2750
+CLARK      MANAGER           2350
+JONES      MANAGER           2875
+SCOTT      ANALYST           2900
+FORD       ANALYST           2900
+SMITH      CLERK              700
+ALLEN      SALESMAN          1500
+WARD       SALESMAN          1150
+MARTIN     SALESMAN          1150
+TURNER     SALESMAN          1400
+ADAMS      CLERK             1000
+JAMES      CLERK              850
+MILLER     CLERK             1200
+
+14 rows selected.
+
+SQL>       
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
