@@ -62,6 +62,7 @@
 /**
  * Pd17 Armstrong number(Sum of Power(count of digit) of each digit is equal to
  * that number)
+ * mine one
  */
 import java.util.Scanner;
 
@@ -76,10 +77,10 @@ public class Pd17 {
     }
 
     static int sumOfPowerOfEach(int n) {
+        int cnt = countOfDigit(n);// this will act as p
         int sum = 0;
-        int cnt = countOfDigit(n);
         while (n > 0) {
-            int rem = n % 10;
+            int rem = n % 10;// this will act as a n value
             sum += powerOfdigit(rem, cnt);
             n /= 10;
         }
@@ -99,8 +100,10 @@ public class Pd17 {
         System.out.println("Enter Number: ");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+
         int originalNumber = n;
         int sum = sumOfPowerOfEach(n);
+
         if (sum == originalNumber) {
             System.out.println(n + " is a Armstrong");
         } else {
