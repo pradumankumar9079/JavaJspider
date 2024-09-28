@@ -307,8 +307,67 @@
 // }
 
 /**
- * Test1 14
+ * Test1 14 WAP To check Given Number is Neon(sum of digits of it's Squaer is
+ * equal to that Number) or Not
+ * eg: 9
  */
-public class Test1 {
+// import java.util.Scanner;
 
-}
+// public class Test1 {
+
+// public static void main(String[] args) {
+// Scanner sc = new Scanner(System.in);
+// System.out.println("Enter Number");
+// int n = sc.nextInt();
+
+// int square = n * n;
+// boolean res = isNeon(square, n);
+// if (res == true) {
+
+// System.out.println(n + " Is Neon number");
+// } else {
+// System.out.println(n + " Is Not Neon number");
+// }
+// }
+
+// static boolean isNeon(int n, int originalNumber) {
+// int sum = 0;
+// while (n > 0) {
+// int rem = n % 10;
+// sum += rem;
+// n /= 10;
+// }
+// if (sum == originalNumber) {
+// return true;
+// }
+// return false;
+// }
+// }
+
+/**
+ * Test1 14 User Enter Number is Prime or not
+ */
+// import java.util.Scanner;
+
+// public class Test1 {
+// public static void main(String[] args) {
+// Scanner sc = new Scanner(System.in);
+// System.out.println("Enter Number: ");
+// int n = sc.nextInt();
+
+// boolean prime = isPrime(n);
+// if (prime == true) {
+// System.out.println(n + " Is Prime");
+// } else {
+// System.out.println(n + " Is not Prime");
+// }
+// }
+
+// static boolean isPrime(int n) {
+// for (int i = 2; i < n; i++) {
+// if (n % i == 0)
+// return false;
+// }
+// return true;
+// }
+// }

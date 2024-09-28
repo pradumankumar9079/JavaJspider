@@ -1,0 +1,498 @@
+SQL> select *
+  2  from emp
+  3  where sal between(1000 and 2000);
+where sal between(1000 and 2000)
+                       *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal between(1000, 2000)
+SQL> /
+where sal between(1000, 2000)
+                      *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> ed                
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal between(1000 and 2000)
+SQL> /
+where sal between(1000 and 2000)
+                       *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal between 1000 and 2000
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300
+        30                   401
+
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500
+        30                   401
+
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400
+        30                   401
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- ----------
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0
+        30                   401
+
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100
+        20                   401
+
+      7934 MILLER     CLERK           7782 23-JAN-82       1300
+        10                   401
+
+
+6 rows selected.
+
+SQL> set pages 200 lines 200
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+6 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal between 2000 and 1000
+SQL> /
+
+no rows selected
+
+SQL> ed   
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal between 'ALLEN' and 'MILLER'
+SQL> /
+where sal between 'ALLEN' and 'MILLER'
+                  *
+ERROR at line 3:
+ORA-01722: invalid number
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal between ('ALLEN' and 'MILLER')
+SQL> /
+where sal between ('ALLEN' and 'MILLER')
+                           *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal between "ALLEN" and "MILLER"
+SQL> /
+where sal between "ALLEN" and "MILLER"
+                              *
+ERROR at line 3:
+ORA-00904: "MILLER": invalid identifier
+
+
+SQL> 
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal between 'ALLEN' and 'MILLER'
+SQL> /
+where sal between 'ALLEN' and 'MILLER'
+                  *
+ERROR at line 3:
+ORA-01722: invalid number
+
+
+SQL> select * 
+  2  from emp
+  3  where hiredate '1-jan-82' and '31-DEC-82';
+where hiredate '1-jan-82' and '31-DEC-82'
+               *
+ERROR at line 3:
+ORA-00920: invalid relational operator
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate between '1-jan-82' and '31-DEC-82'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+SQL>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+SQL> select *
+  2  from emp
+  3  where ename between 'ALLEN' and 'SCOTT'^[:wq
+  4  ; 
+SP2-0552: Bind variable "WQ" not declared.
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename between 'ALLEN' and 'SCOTT'
+  4  /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+10 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename between 'ALLEN' and 'SCOTT'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+10 rows selected.
+
+SQL> ^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[D^[[1;5D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[1;5D^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^est of line ignored.[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[BSQL> [[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[BSQL> [[B^[[B^[[B^[[B^[[B^[[B
+SQL> 734: unknown command beginning "
+SQL> 
+SQL> ^_
+SP2-0042: unknown command "" - rest of line ignored.
+SQL> ^_
+SP2-0042: unknown command "" - rest of line ignored.
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+10 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename between 'ALLSAN' and 'SCOTT'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+9 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename between 'ADKER' and 'SCOTT'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+10 rows selected.
+
+SQL> ed    
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename between 'random' and 'SCOTT'
+SQL> /
+
+no rows selected
+
+SQL> select ename,sal
+  2  from emp
+  3  where sal between 1250 and 3000;
+
+ENAME             SAL
+---------- ----------
+BLAKE            2850
+CLARK            2450
+JONES            2975
+SCOTT            3000
+FORD             3000
+ALLEN            1600
+WARD             1250
+MARTIN           1250
+TURNER           1500
+MILLER           1300
+
+10 rows selected.
+
+SQL>                                                                                                          
+SQL> select *
+  2  from emp
+  3  where sal not between 1100 and 3000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+SQL>  select *
+  2  from emp
+  3  where ename not between 'ALLEN' and 'TURNER';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+
+SQL> select *
+  2  from emp
+  3  where hiredate not between '1-jan-81' and '31-dec-81';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+SQL>  +^[[5~+^[[5~^[[5~+           
+SP2-0734: unknown command beginning "++..." - rest of line ignored.
+SQL> \                                            
+SP2-0042: unknown command "\" - rest of line ignored.
+SQL> 
+SQL> 
+SQL> select ename
+  2  from emp
+  3  where ename like '%N%';
+
+ENAME
+----------
+KING
+JONES
+ALLEN
+MARTIN
+TURNER
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select ename
+  2  from emp
+  3* where ename like '%N'
+SQL> /
+
+ENAME
+----------
+ALLEN
+MARTIN
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select ename
+  2  from emp
+  3* where ename like '%n'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select ename
+  2  from emp
+  3* where ename like '%N'
+SQL> /
+
+ENAME
+----------
+ALLEN
+MARTIN
+
+SQL> select *
+  2  from emp
+  3  where ename like %A%A;
+where ename like %A%A
+                 *
+ERROR at line 3:
+ORA-00911: invalid character
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename like '%A%A'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename like '%A%A%'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+
+SQL> select *
+  2  from emp
+  3  where ename like'%LL%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where sal like'1%'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+6 rows selected.
+
+SQL> select *
+  2  from emp
+  3  where hiredate like'01%-dec-81';
+
+no rows selected
+
+SQL> e d
+SP2-0042: unknown command "e d" - rest of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate like'%dec%'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate like'%DEC%'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+SQL> 
