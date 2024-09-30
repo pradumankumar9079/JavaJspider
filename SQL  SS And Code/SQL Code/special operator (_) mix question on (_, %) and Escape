@@ -1,0 +1,415 @@
+SQL> select * 
+  2  from emp
+  3  where ename like '_L%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+
+SQL> select *
+  2  from emp
+  3  where ename like '%M__';    
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+SQL> select *
+  2  from emp
+  3  WHERE SAL LIKE'_2%;
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* WHERE SAL LIKE '_2%'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+
+SQL> select *      
+  2  from emp 
+  3  where ename like '%#_%' escape '_';
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate like '%#-%' escape '-'
+SQL> /
+
+no rows selected
+
+SQL> d
+SP2-0042: unknown command "d" - rest of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate like '%#-%' escape '#'
+SQL> /
+where hiredate like '%#-%' escape '#'
+                    *
+ERROR at line 3:
+ORA-01424: missing or illegal character following the escape character
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where hiredate like '%#%%' escape '#'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename like '%#%%' escape '#'
+SQL> /
+
+no rows selected
+
+SQL> create table dummy(
+  2  gmail varchar(20));
+create table dummy(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  create table dumb(
+  2* gmail varchar(20))
+SQL> /
+
+Table created.
+
+SQL> insert into dumb values('&gmail');
+Enter value for gmail: abc_@gmail.com
+old   1: insert into dumb values('&gmail')
+new   1: insert into dumb values('abc_@gmail.com')
+
+1 row created.
+
+SQL> /
+Enter value for gmail: ab_cd_ef@gmai.com
+old   1: insert into dumb values('&gmail')
+new   1: insert into dumb values('ab_cd_ef@gmai.com')
+
+1 row created.
+
+SQL> /
+Enter value for gmail: %2@gmail.com
+old   1: insert into dumb values('&gmail')
+new   1: insert into dumb values('%2@gmail.com')
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> select *
+  2  from emp
+  3          
+SQL> 
+SQL> select *
+  2  from dumb
+  3  where gmail like '2%%' escape '2';
+
+GMAIL
+--------------------
+%2@gmail.com
+
+SQL> select *
+  2  from dumb
+  3  where gmail like '_2__2_' escape '2';
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from dumb
+  3* where gmail like '_2__2_%' escape '2'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from dumb
+  3* where gmail like '__2___2_%' escape '2'
+SQL> /
+
+GMAIL
+--------------------
+ab_cd_ef@gmai.com
+
+SQL> alter table dumb
+  2  drop column 
+  3  
+SQL> truncate dumb;
+truncate dumb
+            *
+ERROR at line 1:
+ORA-03290: Invalid truncate command - missing CLUSTER or TABLE keyword
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* truncate table dumb
+SQL> /
+
+Table truncated.
+
+SQL> select * from dumb;
+
+no rows selected
+
+SQL> insert into dumb values('&gmail');
+Enter value for gmail: AB_@GMAIL 
+old   1: insert into dumb values('&gmail')
+new   1: insert into dumb values('AB_@GMAIL')
+
+1 row created.
+
+SQL> /
+Enter value for gmail: A%C@GMAIL
+old   1: insert into dumb values('&gmail')
+new   1: insert into dumb values('A%C@GMAIL')
+
+1 row created.
+
+SQL> /
+Enter value for gmail: ABC_@GMAIL
+old   1: insert into dumb values('&gmail')
+new   1: insert into dumb values('ABC_@GMAIL')
+
+1 row created.
+
+SQL> /
+Enter value for gmail: A_C_@GMAIL
+old   1: insert into dumb values('&gmail')
+new   1: insert into dumb values('A_C_@GMAIL')
+
+1 row created.
+
+SQL> /
+Enter value for gmail: ABC@GMAIL
+old   1: insert into dumb values('&gmail')
+new   1: insert into dumb values('ABC@GMAIL')
+
+1 row created.
+
+SQL> select * from dumb;
+
+GMAIL
+--------------------
+AB_@GMAIL
+A%C@GMAIL
+ABC_@GMAIL
+A_C_@GMAIL
+ABC@GMAIL
+
+SQL> select *
+  2  from dumb
+  3  where gmail like '__2_%' escape '2';
+
+GMAIL
+--------------------
+AB_@GMAIL
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from dumb
+  3* where gmail like '__2_' escape '2'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from dumb
+  3* where gmail like '__2_%' escape '2'
+SQL> /
+
+GMAIL
+--------------------
+AB_@GMAIL
+
+SQL> select *
+  2  from emp
+  3  where ename not like 'M%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+
+12 rows selected.
+
+SQL> select *
+  2  from emp
+  3  where job not like '%MAN%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+7 rows selected.
+
+SQL> select *
+  2  from emp
+  3  where ename not like '__A%' and '__E%' and '__I%' and '__O%' and '__U%';
+where ename not like '__A%' and '__E%' and '__I%' and '__O%' and '__U%'
+                                       *
+ERROR at line 3:
+ORA-00920: invalid relational operator
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename not like( '__A%' and '__E%' and '__I%' and '__O%' and '__U%')
+SQL> /
+where ename not like( '__A%' and '__E%' and '__I%' and '__O%' and '__U%')
+                             *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename not like '__A%' and ename not like '__E%' and ename not like '__I%' and ename not like '__O%' and ename not like '__U%'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                   401
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                   401
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                   401
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                   401
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                   401
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                   401
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                   401
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                   401
+
+9 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename like '__A%' and ename not like '__E%' and ename not like '__I%' and ename not like '__O%' and ename not like '__U%'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                   401
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename like 'A%' and ename like 'E%' and ename like 'I%' and ename not 'O%' and ename like 'U%'
+SQL> /
+where ename like 'A%' and ename like 'E%' and ename like 'I%' and ename not 'O%' and ename like 'U%'
+                                                                            *
+ERROR at line 3:
+ORA-00920: invalid relational operator
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename like 'A%' and ename like 'E%' and ename like 'I%' and ename like 'O%' and ename like 'U%'
+SQL> /
+
+no rows selected
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3* where ename like 'A%' Or ename like 'E%' or ename like 'I%' or ename like 'O%' or ename like 'U%'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select *
+  2  from emp
+  3  where ename like 'A%' Or
+  4  ename like 'E%' or
+  5  ename like 'I%' or
+  6  ename like 'O%' or
+  7* ename like 'U%'
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO MANAGERNAM EMP_NUMBER
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                   401
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                   401
+
+SQL> 
